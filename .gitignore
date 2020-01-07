@@ -130,5 +130,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-.gitignore
-.test1.py
+*.gitignore
+test1.py
