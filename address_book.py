@@ -90,13 +90,15 @@ def new_member():
 while True:
     print('хотите еще кого-то добавить в файл? Y[да] -- N[нет]')
     question = input('\n$: ')
-    if question != 'y' or question != 'Y':
+    if question == 'N' or question == 'n':
         break
-    else:
+    elif question == 'Y' or question =='y':
         new_member()
         f = open(my_file, 'ab')
         pickle.dump(add_book, f)
         f.close()
+    else:
+    	pass
 
 print()
 check()
