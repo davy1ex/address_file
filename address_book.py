@@ -1,6 +1,7 @@
 import pickle
 from abc import *
 import os
+from abc import ABC
 
 add_book = {}
 my_file = 'add_file.data'
@@ -39,21 +40,21 @@ class AddressMember(metaclass=ABCMeta):
     def __init__(self, name, number):
         self.name = name
         self.number = number
-        # print('создан участник: {}'.format(self.name))
+        print('создан участник: {}'.format(self.name))
 
-    @staticmethod
-    def show1(self):
+    @abstractmethod
+    def show(self):
         print("\nимя -- {0}; номер -- {1}\n".format(self.name, self.number), end='')
 
 
-class Member(AddressMember):
-    #
+class Member(AddressMember, ABC):
     def __init__(self, name, number):
         AddressMember.__init__(self, name, number)
         print("создан участник: имя -- {}; номер -- {}".format(self.name, self.number))
 
     def show(self):
-        AddressMember.show1(self)
+        AddressMember.show(self)
+        print("создан участник: имя -- {}; номер -- {}".format(self.name, self.number))
 
 
 def contacts():
@@ -92,13 +93,13 @@ while True:
     question = input('\n$: ')
     if question == 'N' or question == 'n':
         break
-    elif question == 'Y' or question =='y':
+    elif question == 'Y' or question == 'y':
         new_member()
         f = open(my_file, 'ab')
         pickle.dump(add_book, f)
         f.close()
     else:
-    	pass
+        pass
 
 print()
 check()
